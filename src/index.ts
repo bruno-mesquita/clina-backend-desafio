@@ -1,5 +1,13 @@
-import app from "./App";
+import app from './App';
+import Database from './Database';
 
-const { PORT } = process.env;
 
-app.listen(PORT || 3030, () => console.info(`Server up ${PORT}`));
+(async () => {
+  const { PORT } = process.env;
+
+  await new Database().init();
+
+  app.listen(PORT || 3030, () => console.info(`Server up ${PORT}`));
+})();
+
+
