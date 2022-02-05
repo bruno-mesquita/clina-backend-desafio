@@ -7,6 +7,9 @@ declare global {
 
       PORT: number;
 
+      JWT_PASS: string;
+      JWT_EXPIRES: string;
+
       DB_TYPE: Dialect;
       DB_PASS: string;
       DB_USER: string;

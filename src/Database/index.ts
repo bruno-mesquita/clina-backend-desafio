@@ -1,23 +1,12 @@
-import { Sequelize } from 'sequelize';
-
-import sequelizeConfig from '../config/database';
-
+import { createConnection } from 'typeorm';
 
 class Database {
-  private sequelize: Sequelize;
-
   async init(): Promise<void> {
     try {
-      this.sequelize = new Sequelize(sequelizeConfig);
-
-      await this.sequelize.authenticate();
+      await createConnection();
     } catch (err) {
       console.log('Erro ao se conectar ao database');
     }
-  }
-
-  public async disconnect() {
-    await this.sequelize.close();
   }
 }
 
