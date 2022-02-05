@@ -2,10 +2,11 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany
 
 import { Image } from "./Image";
 import { Address } from './Address';
+import { Schedule } from './Schedule';
 
-@Entity()
+@Entity({ synchronize: true })
 export class Room {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
@@ -15,9 +16,13 @@ export class Room {
   description: string;
 
   @OneToMany(() => Image, photo => photo.room)
-  photos?: Image[];
+  photos: Image[];
 
-  @OneToOne(() => Address)
+  @OneToMany(() => Schedule, schedule => schedule.room)
+  schedules: Schedule[];
+
+
+  @OneToOne(() => Address, { cascade: true })
   @JoinColumn()
   address: Address;
 }

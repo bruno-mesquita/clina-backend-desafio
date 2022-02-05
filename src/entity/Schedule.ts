@@ -1,13 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 
 import { Room } from "./Room";
 
 type Period = 'manhã' | 'tarde' | 'noite'
 type Status = 'disponível' | 'indisponível' | 'reservada';
 
-@Entity()
+@Entity({ synchronize: true })
 export class Schedule {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()
@@ -16,8 +16,7 @@ export class Schedule {
   @Column()
   date: string;
 
-  @OneToOne(() => Room)
-  @JoinColumn()
+  @ManyToOne(() => Room, room => room.schedules)
   room: Room;
 
   @Column()

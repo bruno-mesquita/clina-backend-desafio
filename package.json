@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsnd src/index.ts",
+    "dev": "cross-env NODE_ENV=development tsnd --respawn --transpile-only --clear src/index.ts",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "cross-env NODE_ENV=production node dist/index.js"

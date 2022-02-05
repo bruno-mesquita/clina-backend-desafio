@@ -22,7 +22,6 @@ export class AuthController {
 
       return res.json({ token });
     } catch (err) {
-      console.log(err.message);
       return res.status(400).json({ errorMessage: 'Erro ao fazer login' });
     }
   }

@@ -5,7 +5,7 @@ import { Image } from './Image';
 
 @Entity({ synchronize: true })
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
   @Column()

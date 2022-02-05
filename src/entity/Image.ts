@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
 import { Room } from "./Room";
 
-@Entity()
+@Entity({ synchronize: true })
 export class Image {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column()
+  @Column({ type: 'text' })
   encoded: string;
 
   @ManyToOne(() => Room, room => room.photos)
