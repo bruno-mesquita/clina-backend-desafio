@@ -5,7 +5,9 @@
 ### Suba um database
 Primeiramente a API precisa de um Database para funcionar, recomendo o executar um database postgres com o docker com o seguinte comando
 
-`docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres`
+```bash
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+```
 
 Depois criar o database *clina-desafio*
 
